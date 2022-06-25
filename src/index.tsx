@@ -10,9 +10,10 @@ import {
     Route,
 } from "react-router-dom";
 
-// import AppRootModule from './app.shared/app'
+import AppRootModule from './app.shared/app'
 import Navigation from "./app.shared/app.layouts/app.navigation/navigation";
 import {MantineProvider, MantineThemeOverride} from "@mantine/core";
+import {AppHeader} from "./app.shared/app.layouts/app.navigation/header";
 
 // const MANTINE_THEME: MantineThemeOverride = {
 //     colors: {
@@ -27,7 +28,7 @@ ReactDOM.render(
             <BrowserRouter>
                 <Navigation>
                     <Routes>
-                        {/*<Route {...AppRootModule.routeProps}/>*/}
+                        <Route {...AppRootModule.routeProps}/>
                         {
                             CommonModules.map(module =>
                                     <Route {...module.routeProps}

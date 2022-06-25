@@ -1,56 +1,55 @@
 import {ActionIcon, Text, Center, Group, Header as MantineHeader, Container} from "@mantine/core";
-import {Link} from "react-router-dom";
-import {Beach, ListSearch, UserCircle} from "tabler-icons-react";
+import {Link, useLocation} from "react-router-dom";
+import { CalendarEvent, Home, MoodSmile, Qrcode} from "tabler-icons-react";
 
 
 const Navigation = (props:{children:JSX.Element}) => {
 
-    const ICON_SIZE = { height: 45, width: 45 }
+    const location = useLocation()
+
     return(
          <>
              {props.children}
-            <MantineHeader height={55} fixed={true} position={{ bottom: -1, left: 0, right: 0 }}>
-                <Container size={'sm'} px={0}>
-                <Group grow spacing={0} sx={{height: '55px'}}>
-                    <Link to={"/map"}>
-                        <Center>
-                                <Group position={"center"} direction={'column'} spacing={1}>
-                                        <ActionIcon variant={'hover'} size={'md'}>
-                                                <Beach style={ICON_SIZE}/>
-                                        </ActionIcon>
-                                    <Text color={"black"} underline={false} size={"xs"}>Карта</Text>
-                                </Group>
-                        </Center>
-                    </Link>
-                    <Link to={"/search"}>
-                        <Center>
-                            <Group position={"center"} direction={'column'} spacing={1}>
-                                <ActionIcon variant={'hover'} size={'md'}>
-                                    <ListSearch style={ICON_SIZE}/>
-                                </ActionIcon>
-                                <Text color={"black"} underline={false} size={"xs"}>Поиск</Text>
-                            </Group>
-                        </Center>
-                    </Link>
-                    <Link to={"/profile"}>
-                        <Center>
-                            <Group position={"center"} direction="column" spacing={1}>
-                                <ActionIcon size={'md'}>
-                                    <UserCircle style={ICON_SIZE}/>
-                                </ActionIcon>
-                                <Text color={"black"} underline={false} size={"xs"}>Профиль</Text>
-                            </Group>
-                        </Center>
-                    </Link>
-                    <Link style={{position:"absolute", height:"75px", width:"75px", bottom: "3px", right: "7vw"}} to={"/cart"}>
-                        <Center>
-                            <>
-                            </>
-                        </Center>
-                    </Link>
-                </Group>
-                </Container>
-            </MantineHeader>
+             {
+                 location.pathname != '/' &&
+                 <MantineHeader height={60} fixed={true} position={{ bottom: 0, left: 0, right: 0 }} sx={{ borderTop: '2px solid #D0D0D0' }}>
+                     <Container sx={{height: '100%'}}>
+                         <Group position={ 'left' } align={ 'center' } spacing={ 40 } pt={ 5 }>
+                             <Group direction={ 'column' } align={ 'center' } spacing={ 0 }>
+                                 <ActionIcon component={Link} to="/home">
+                                     <Home size={ 48 }/>
+                                 </ActionIcon>
+                                 <Text>Главная</Text>
+                             </Group>
+                             <Group direction={ 'column' } align={ 'center' } spacing={ 0 }>
+                                 <ActionIcon component={Link} to="/events">
+                                     <CalendarEvent size={ 48 }/>
+                                 </ActionIcon>
+                                 <Text>События</Text>
+                             </Group>
+                             <Group direction={ 'column' } align={ 'center' } spacing={ 0 }>
+                                 <ActionIcon component={Link} to="/profile">
+                                     <MoodSmile size={ 48 }/>
+                                 </ActionIcon>
+                                 <Text>Профиль</Text>
+                             </Group>
+                             <ActionIcon
+                                 color={ 'blue' }
+                                 size={ 62 }
+                                 variant={ 'filled' }
+                                 sx={{
+                                     position: 'absolute',
+                                     bottom: 12,
+                                     right: 12,
+                                     borderRadius: '100%'
+                                 }}
+                             >
+                                 <Qrcode size={ 44 }/>
+                             </ActionIcon>
+                         </Group>
+                     </Container>
+                 </MantineHeader>
+             }
          </>
     )
 

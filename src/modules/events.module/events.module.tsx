@@ -1,20 +1,20 @@
 import React, {useEffect, useState} from 'react';
 
-const Profile = () => {
+const Events = () => {
 
     return (
         <>
-            Профиль
+            события
         </>
     );
 }
 
 export default {
     routeProps: {
-        path: '/profile',
+        path: '/events',
         exact: true,
         index: false,
-        element: <Profile/>,
+        element: <Events/>,
     },
-    name: 'Profile',
+    name: 'Events',
 };
