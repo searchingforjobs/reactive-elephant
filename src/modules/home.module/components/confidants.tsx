@@ -33,7 +33,7 @@ const Confidants = () => {
                                     src={ arrow }
                                 />
                             </Group>
-                            <Badge mt={ 15 }>{ confidant.role }</Badge>
+                            <Badge variant={ 'outline' } mt={ 14 }>{ confidant.role }</Badge>
                         </Paper>
                     )
                 }

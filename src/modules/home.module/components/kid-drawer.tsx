@@ -1,38 +1,24 @@
-import React, {useEffect, useState} from 'react';
-import {Avatar, Badge, Button, Container, Group, Image, Paper, Text} from "@mantine/core";
-import accepted from "../../app.shared/app.images/acceptedIndicator.svg";
-import arrow from "../../app.shared/app.images/arrow.svg";
+import React from 'react';
+import {Button, Container, Drawer, Group, Image, Paper, Text} from "@mantine/core";
+import accepted from "../../../app.shared/app.images/acceptedIndicator.svg";
+import arrow from "../../../app.shared/app.images/arrow.svg";
 
-const Profile = () => {
+interface KidDrawerProps {
+    opened: boolean,
+    setOpened: (a:boolean) => void
+}
 
+const KidDrawer = ( props: KidDrawerProps ) => {
     return (
-        <Container mt={ 50 } mb={ 150 }>
-            <Group position={ 'center' } align={ 'top' }>
-                <Group direction={ 'column' } align={ 'center' } spacing={ 0 }>
-                    <Avatar size={ 'xl' }/>
-                    <Button variant={ 'subtle' } compact>Изменить фото</Button>
-                </Group>
-                <Group>
-                    <Paper p={ 18 } sx={{ border: '1px solid #EDEDED', borderRadius: '6px', backgroundColor: 'white' }}>
-                        <Text sx={{
-                            lineHeight: 1.1,
-                            '&:before': {
-                                content: '""',
-                                display: 'block',
-                                background: `url(${accepted}) no-repeat`,
-                                width: '20px',
-                                height: '20px',
-                                float: 'left',
-                                margin: '2px -4px 0 0',
-                            }
-                        }}
-                        >
-                            Учетная запись<br/>подтверждена
-                        </Text>
-                    </Paper>
-                </Group>
-            </Group>
-            <Text size={ 'lg' } weight={ 600 } align={ 'center' } mt={ 30 } mb={ 20 } transform={ 'uppercase' }>КРЫЛОВ АЛЕКСЕЙ СЕРГЕЕВИЧ</Text>
+        <Drawer
+            opened={ props.opened }
+            onClose={ () => props.setOpened(false) }
+            position={ 'left' }
+            size={ 'xl' }
+            padding={ 'xl' }
+        >
+            <Text size={ 'lg' } weight={ 600 } align={ 'center' } mt={ 30 } transform={ 'uppercase' }>КРЫЛОВА МАРИЯ АЛЕКСЕЕВНА</Text>
+            <Text weight={ 600 } align={ 'center' } color={ 'blue' } mt={ 10 } mb={ 30 }>Редактировать профиль</Text>
 
             <Group>
                 <Paper p={ 20 } sx={{ border: '1px solid #EDEDED', borderRadius: '6px', width: '100%' }}>
@@ -52,7 +38,7 @@ const Profile = () => {
                         }
                     }}
                     >
-                        21.03.1996
+                        21.03.2006
                     </Text>
                 </Paper>
 
@@ -74,6 +60,27 @@ const Profile = () => {
                     }}
                     >
                         +7 (928) 999-99-99
+                    </Text>
+                </Paper>
+
+                <Paper p={ 20 } sx={{ border: '1px solid #EDEDED', borderRadius: '6px', width: '100%' }}>
+                    <Group position={ 'apart' } >
+                        <Text weight={ 600 } size={ 'md' }>Место учебы</Text>
+                        <Text weight={ 600 } color={ 'blue' } size={ 'md' }>Изменить</Text>
+                    </Group>
+                    <Text mt={ 10 } sx={{
+                        '&:before': {
+                            content: '""',
+                            display: 'block',
+                            background: `url(${accepted}) no-repeat`,
+                            width: '20px',
+                            height: '20px',
+                            float: 'left',
+                            margin: '5px -4px 0 0',
+                        }
+                    }}
+                    >
+                        МБОУ СОШ №10
                     </Text>
                 </Paper>
 
@@ -99,16 +106,8 @@ const Profile = () => {
                     </Group>
                 </Paper>
             </Group>
-        </Container>
+        </Drawer>
     );
-}
-
-export default {
-    routeProps: {
-        path: '/profile',
-        exact: true,
-        index: false,
-        element: <Profile/>,
-    },
-    name: 'Profile',
 };
+
+export default KidDrawer;

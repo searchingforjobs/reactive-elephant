@@ -18,7 +18,6 @@ const Home = () => {
                         <Text
                             size={ 'xs' }
                             sx={{
-
                                 '&:before': {
                                     content: '""',
                                     display: 'block',
