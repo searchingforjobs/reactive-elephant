@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import {Button, Center, Container, Divider, Group, Image, Text} from "@mantine/core";
 
 import gos from '../../app.images/gosuslugi.svg';
+import logo from "../../app.images/logo.svg";
 
 export const LoginLayout = () => {
 
@@ -30,18 +31,19 @@ export const LoginLayout = () => {
 
     const loginUser = () => {
         // signInWithEmailAndPassword("mail@mail.ru", "123456")
-        navigate('/profile')
+        navigate('/home')
     }
 
     return (
             <Center sx={{ height: '80vh' }}>
-                <Group direction={ 'column' } align={ 'center' }>
-                    <Text mb={ 50 } weight={ 700 } color={ 'blue' } sx={{ fontSize: '40px' }} >ПропускЕсть</Text>
-                    <Button fullWidth onClick={ loginUser }>Родитель</Button>
-                    {/*<Button fullWidth onClick={ loginManager }>Менеджер</Button>*/}
+                <Group direction={ 'column' } align={ 'center' } sx={{ minWidth: '300px' }}>
+                    <Image mb={ 40 } height={ 40 } src={ logo }/>
+                    {/*<Text mb={ 50 } weight={ 700 } color={ 'blue' } sx={{ fontSize: '40px' }} >ПропускЕсть</Text>*/}
+                    {/*<Button fullWidth onClick={ loginManager }>Родитель</Button>*/}
+                    <Button fullWidth onClick={ loginUser } size={ 'md' }>Родитель</Button>
                     <Divider size={ 'xs' } label={ 'или' } labelPosition={ 'center' } sx={{width: '100%'}}/>
-                    <Button fullWidth onClick={ () => {} }>Создать профиль</Button>
-                    <Button fullWidth onClick={ () => {} } sx={{
+                    <Button fullWidth onClick={ () => {} } size={ 'md' }>Создать профиль</Button>
+                    <Button fullWidth onClick={ () => {} } size={ 'md' } sx={{
                         border: '1px solid #E7E7E7',
                         backgroundColor: 'white',
                         '&:hover': {

@@ -16,6 +16,7 @@ const KidDrawer = ( props: KidDrawerProps ) => {
             position={ 'left' }
             size={ 'xl' }
             padding={ 'xl' }
+            // sx={{backgroundColor: '#F8F9FA'}}
         >
             <Text size={ 'lg' } weight={ 600 } align={ 'center' } mt={ 30 } transform={ 'uppercase' }>КРЫЛОВА МАРИЯ АЛЕКСЕЕВНА</Text>
             <Text weight={ 600 } align={ 'center' } color={ 'blue' } mt={ 10 } mb={ 30 }>Редактировать профиль</Text>
